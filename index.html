@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ekta ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;600&display=swap');
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh; padding: 24px 14px;
+  display: flex; justify-content: center; align-items: center;
+  background: linear-gradient(135deg,#18091f,#671633,#220b25);
+  color: white; font-family: Poppins, sans-serif; overflow-x: hidden;
+}
+.container { width: 100%; max-width: 460px; text-align: center; z-index: 1; }
+h1 { font: 700 54px 'Dancing Script', cursive; color: #ffb4d0; text-shadow: 0 0 20px #ff458a; }
+.subtitle { color: #ffe0eb; font-size: 13px; }
+.envelope {
+  margin: 28px auto; width: 170px; height: 110px;
+  position: relative; background: #e94e83; border-radius: 5px;
+  cursor: pointer; box-shadow: 0 0 30px #ff528855;
+}
+.envelope:before {
+  content: ''; position: absolute; inset: 0;
+  border-left: 85px solid transparent; border-right: 85px solid transparent;
+  border-top: 65px solid #ff9fbd; transform-origin: top;
+  transition: transform .7s; z-index: 2;
+}
+.envelope.open:before { transform: rotateX(180deg); }
+.envelope:after { content: '❤️'; position: absolute; inset: 0; display: grid; place-items: center; font-size: 35px; }
+.letter {
+  display: none; background: #fff3f7; color: #4a1930;
+  border-radius: 18px; padding: 24px 19px; text-align: left;
+  box-shadow: 0 12px 40px #0005;
+}
+.letter.show { display: block; animation: unfold .8s ease both; }
+@keyframes unfold { from { opacity: 0; transform: translateY(20px) scale(.94); } to { opacity: 1; transform: none; } }
+.letter h2 { font: 600 36px 'Dancing Script', cursive; color: #c52e65; text-align: center; }
+.message { white-space: pre-line; font-size: 14px; line-height: 1.9; }
+.question { margin-top: 24px; font-weight: 600; text-align: center; color: #a31e50; }
+.buttons { display: flex; justify-content: center; gap: 14px; margin: 20px 0; }
+button { border: 0; border-radius: 28px; padding: 12px 27px; font: 600 16px Poppins,sans-serif; cursor: pointer; }
+.yes { background: linear-gradient(135deg,#ff4384,#e3155c); color: white; }
+.no { background: #f0dce5; color: #762743; }
+.result { display: none; text-align: center; margin-top: 20px; }
+.result.show { display: block; animation: unfold .8s ease both; }
+.love { font: 700 50px 'Dancing Script',cursive; color: #e91e63; animation: write 2s ease both; }
+@keyframes write { from { opacity: 0; clip-path: inset(0 100% 0 0); } to { opacity: 1; clip-path: inset(0); } }
+.sad { font: 600 46px 'Dancing Script',cursive; color: #a52c57; animation: shake .5s; }
+@keyframes shake { 25% { transform: rotate(-7deg); } 75% { transform: rotate(7deg); } }
+.notify { display: inline-block; margin-top: 12px; padding: 11px 16px; border-radius: 24px; background: #18885c; color: white; text-decoration: none; font-size: 13px; }
+.heart { position: fixed; bottom: -30px; color: #ff7da8; pointer-events: none; animation: floatUp 7s linear infinite; opacity: .7; }
+@keyframes floatUp { to { transform: translateY(-110vh) rotate(360deg); opacity: 0; } }
+.note { color: #f7cfdf; font-size: 11px; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<main class="container">
+<h1>For Ekta ❤️</h1>
+<p class="subtitle">A little letter from my heart to yours...</p>
+<div class="envelope" id="envelope" onclick="openLetter()"></div>
+<p id="hint">💌 Tap the envelope to open your letter</p>
+
+<section class="letter" id="letter">
+<h2>Dear Ekta ❤️</h2>
+<div class="message">Maanta hoon bahut der ho gayi hai
+hamare ek hone ke liye...
+
+Lekin agar tum chaho, toh hum
+apni zindagi ko ek mauka de sakte hain.
+
+Main tujhe kabhi khona nahi chahta,
+isiliye tere peeche pada rehta hoon...
+
+Shayad main apni feelings sahi se
+bata nahi paaya, par tu mere liye
+bahut special hai. ❤️
+
+Bas ek baar dil se sochna...
+agar tumhara dil bhi chahe,
+toh hum ek nayi shuruaat kar sakte hain. 💗</div>
+
+<div class="question">Will you be mine, jab tak zindagi chahe? ❤️</div>
+<div class="buttons">
+<button class="yes" onclick="choose('YES')">YES 💖</button>
+<button class="no" onclick="choose('NO')">NO 🥺</button>
+</div>
+<div class="result" id="result">
+<div id="resultText"></div>
+<p id="resultMessage"></p>
+<a id="notify" class="notify" href="#" target="_blank" rel="noopener noreferrer">📲 Send your answer to me</a>
+</div>
+</section>
+<p class="note">Made with ❤️, just for you, Ekta.</p>
+</main>
+
+<script>
+const MY_WHATSAPP_NUMBER = "918817535587";
+
+function openLetter() {
+  document.getElementById('envelope').classList.add('open');
+  document.getElementById('letter').classList.add('show');
+  document.getElementById('hint').style.display = 'none';
+  document.getElementById('envelope').style.display = 'none';
+}
+
+function choose(answer) {
+  const result = document.getElementById('result');
+  result.classList.add('show');
+
+  if (answer === 'YES') {
+    document.getElementById('resultText').innerHTML = '<div class="love">Love You, Ekta ❤️</div>';
+    document.getElementById('resultMessage').textContent = 'You just made my heart smile! 💖';
+  } else {
+    document.getElementById('resultText').innerHTML = '<div class="sad">My Bad 🥺💔</div>';
+    document.getElementById('resultMessage').textContent = 'It is okay, Ekta. Thank you for being honest. ❤️';
+  }
+
+  const notify = document.getElementById('notify');
+  const msg = "Ekta's response to your proposal: " + answer;
+  if (/^\d{10,15}$/.test(MY_WHATSAPP_NUMBER)) {
+    notify.href = 'https://wa.me/' + MY_WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
+    notify.style.display = 'inline-block';
+  } else {
+    notify.removeAttribute('href');
+    notify.textContent = '⚠️ Add your WhatsApp number in the code first';
+  }
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+for (let i=0; i<20; i++) {
+  const h = document.createElement('div');
+  h.className = 'heart';
+  h.textContent = ['♥','♡','💗'][i%3];
+  h.style.left = Math.random()*100+'vw';
+  h.style.animationDelay = Math.random()*7+'s';
+  h.style.animationDuration = (5+Math.random()*5)+'s';
+  h.style.fontSize = (15+Math.random()*22)+'px';
+  document.getElementById('hearts').appendChild(h);
+}
+</script>
+</body>
+</html>
